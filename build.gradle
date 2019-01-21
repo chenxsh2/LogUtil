@@ -32,7 +32,7 @@ android {
             zipAlignEnabled true
 
             //移除无用的resource文件
-            shrinkResources true
+//            shrinkResources true
 
             //true:只能调试library未混淆部分的代码 false:可调试整个library的代码
             //混淆标志
