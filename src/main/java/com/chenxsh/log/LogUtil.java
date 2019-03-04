@@ -37,6 +37,10 @@ public class LogUtil {
      * Log输出所行号
      */
     private static int lineNumber;
+    /**
+     * 当前线程ID
+     */
+    private static String threadName;
 
     /**
      * 创建Log输出的基本信息
@@ -51,6 +55,8 @@ public class LogUtil {
         buffer.append("()");
         buffer.append(" line:");
         buffer.append(lineNumber);
+        buffer.append(" threadName:");
+        buffer.append(threadName);
         buffer.append("] ");
         buffer.append(log);
 
@@ -66,6 +72,7 @@ public class LogUtil {
         className = sElements[1].getFileName().split("\\.")[0];
         methodName = sElements[1].getMethodName();
         lineNumber = sElements[1].getLineNumber();
+        threadName = Thread.currentThread().getName();
     }
 
     /**
