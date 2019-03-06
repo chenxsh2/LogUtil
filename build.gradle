@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
 //bintray-release插件
 //apply plugin: 'com.novoda.bintray-release'
 
@@ -90,3 +91,13 @@ dependencies {
 //    archives sourcesJar
 ////    archives androidJavadocsJar
 //}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: uri('../'))
+        pom.groupId = 'log'
+        pom.artifactId = 'LogUtil'
+        pom.version = '1.0.0'
+        println("local repository uploadArchives")
+    }
+}
