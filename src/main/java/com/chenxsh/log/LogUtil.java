@@ -21,22 +21,27 @@ public class LogUtil {
     public static final int ERROR = 5;
     public static final int NOTHING = 6;
     public static final int level = VERBOSE;// 修改日志打印级别，生产环境请改为：NOTHING
+
     /**
      * 输出的最大行数
      */
     private final static int LOG_MAXLENGTH = 3 * 1024;
+
     /**
      * Log输出所在类
      */
     private static String className;
+
     /**
      * Log输出所在方法
      */
     private static String methodName;
+
     /**
      * Log输出所行号
      */
     private static int lineNumber;
+
     /**
      * 当前线程ID
      */
@@ -84,6 +89,7 @@ public class LogUtil {
         className = sElements[2].getFileName().split("\\.")[0];
         methodName = sElements[2].getMethodName();
         lineNumber = sElements[2].getLineNumber();
+        threadName = Thread.currentThread().getName();
     }
 
     /**
@@ -99,8 +105,7 @@ public class LogUtil {
                 getMethodNames(new Throwable().getStackTrace());
 //                Log.v(tag, className + createLog(msg));
                 log(tag, msg, VERBOSE);
-            }
-            else {
+            } else {
                 logUtil(tag, msg, VERBOSE);
             }
         }
@@ -120,8 +125,7 @@ public class LogUtil {
 //                Log.d(tag, className + createLog(msg));
                 log(tag, msg, DEBUG);
 //                return;
-            }
-            else {
+            } else {
                 logUtil(tag, msg, DEBUG);
             }
 //            int strLength = msg.length();
@@ -160,8 +164,7 @@ public class LogUtil {
                 getMethodNames(new Throwable().getStackTrace());
 //                Log.i(tag, className + createLog(msg));
                 log(tag, msg, INFO);
-            }
-            else {
+            } else {
                 logUtil(tag, msg, INFO);
             }
         }
@@ -180,8 +183,7 @@ public class LogUtil {
                 getMethodNames(new Throwable().getStackTrace());
 //                Log.w(tag, className + createLog(msg));
                 log(tag, msg, WARN);
-            }
-            else {
+            } else {
                 logUtil(tag, msg, WARN);
             }
         }
@@ -201,8 +203,7 @@ public class LogUtil {
                 getMethodNames(new Throwable().getStackTrace());
 //                Log.e(tag, className + createLog(msg));
                 log(tag, msg, ERROR);
-            }
-            else {
+            } else {
                 logUtil(tag, msg, ERROR);
 //                int strLength = msg.length();
 //                int start = 0;
@@ -262,8 +263,7 @@ public class LogUtil {
                 log(tag + "->" + i + "<-", msg.substring(start, end), logLevel);
                 start = end;
                 end = end + LOG_MAXLENGTH;
-            }
-            else {
+            } else {
                 getMethodNames2(new Throwable().getStackTrace());
                 log(tag + "-->" + i + "<--", msg.substring(start, strLength), logLevel);
                 // 跳出循环
@@ -322,11 +322,9 @@ public class LogUtil {
 
             sw.flush();
             sw.close();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Log.e(TAG, Log.getStackTraceString(e));
-        }
-        catch (Throwable t) {
+        } catch (Throwable t) {
             Log.e(TAG, Log.getStackTraceString(t));
         }
         return sw.toString();
