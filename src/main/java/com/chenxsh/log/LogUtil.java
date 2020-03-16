@@ -99,7 +99,9 @@ public class LogUtil {
      * @param msg 日志关键信息
      */
     public static void v(String tag, String msg) {
-
+        if (msg == null) {
+            msg = "null";
+        }
         if (level <= VERBOSE) {
             if (msg.length() <= LOG_MAXLENGTH) {
                 getMethodNames(new Throwable().getStackTrace());
@@ -118,7 +120,9 @@ public class LogUtil {
      * @param msg 日志关键信息
      */
     public static void d(String tag, String msg) {
-
+        if (msg == null) {
+            msg = "null";
+        }
         if (level <= DEBUG) {
             if (msg.length() <= LOG_MAXLENGTH) {
                 getMethodNames(new Throwable().getStackTrace());
@@ -158,7 +162,9 @@ public class LogUtil {
      * @param msg 日志关键信息
      */
     public static void i(String tag, String msg) {
-
+        if (msg == null) {
+            msg = "null";
+        }
         if (level <= INFO) {
             if (msg.length() <= LOG_MAXLENGTH) {
                 getMethodNames(new Throwable().getStackTrace());
@@ -177,7 +183,9 @@ public class LogUtil {
      * @param msg 日志关键信息
      */
     public static void w(String tag, String msg) {
-
+        if (msg == null) {
+            msg = "null";
+        }
         if (level <= WARN) {
             if (msg.length() <= LOG_MAXLENGTH) {
                 getMethodNames(new Throwable().getStackTrace());
@@ -197,7 +205,9 @@ public class LogUtil {
      * @param msg 日志关键信息
      */
     public static void e(String tag, String msg) {
-
+        if (msg == null) {
+            msg = "null";
+        }
         if (level <= ERROR) {
             if (msg.length() <= LOG_MAXLENGTH) {
                 getMethodNames(new Throwable().getStackTrace());
@@ -236,7 +246,9 @@ public class LogUtil {
      * @param msg 日志关键信息
      */
     public static void n(String tag, String msg) {
-
+        if (msg == null) {
+            msg = "null";
+        }
         if (level <= NOTHING) {
             getMethodNames(new Throwable().getStackTrace());
 //            Log.i(tag, className + createLog(msg));
